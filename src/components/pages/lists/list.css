@@ -1,0 +1,87 @@
+/* Define styles for mobile screens */
+.container {
+    /* width: 100%; */
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Define styles for larger screens using media queries */
+  @media (min-width: 768px) {
+    /* Adjust the container width and padding for larger screens */
+    .container {
+      width: 80%;
+      padding: 20px;
+    }
+  
+    /* Add styles for the header section */
+    .header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    /* Add styles for the content section */
+    .content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    /* Add styles for the footer section */
+    .footer {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    /* Add styles for the buttons */
+    .buttons {
+      flex-direction: row;
+    }
+    
+  }
+
+
+  /* Custom CSS for Pagination Component */
+.pagination-container {
+  align-self: stretch;
+    padding: 20px 24px;
+    justify-content: center !important;
+    align-items: center;
+    display: inline-flex;
+}
+
+.pagination-list {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.page-item {
+  margin: 0 2px;
+}
+
+.page-link {
+  color: rgb(160, 6, 14);
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid rgb(160, 6, 14);
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.page-link:hover {
+  /* background-color: #007bff; */
+  background: linear-gradient(89deg, rgb(160, 6, 14) 0%, rgb(224, 149, 12) 100%);
+  color: #fff;
+  /* border-color: #007bff; */
+}
+
+.page-item.active .page-link {
+  background: linear-gradient(89deg, rgb(160, 6, 14) 0%, rgb(224, 149, 12) 100%);
+  color: #fff;
+}

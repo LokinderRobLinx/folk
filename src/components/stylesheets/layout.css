@@ -1,0 +1,238 @@
+/* navbar style  */
+
+.navbar-bg {
+  background-color: orange;
+  padding: 5px 0;
+  z-index: 99;
+  height: 12vh;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar {
+  position: relative;
+  flex-wrap: wrap;
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.navbar-container {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 90%;
+}
+
+/* Navigation menu styles */
+.navbar-nav {
+  display: flex;
+  /* flex-direction: row; */
+  padding-left: 20px;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+}
+
+/* .logo {
+    display: grid;
+    grid-column: 2/3;
+    
+    justify-content: start;
+    align-items: center;
+  } */
+
+.logo h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  /* background: -webkit-linear-gradient(rgb(235, 8, 8), blue); */
+  background: -webkit-linear-gradient(rgb(160, 6, 14) 0%, rgb(224, 149, 12));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+.logo h2 span {
+  font-size: 3rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logoImg {
+  width: 60px;
+  height: auto;
+  margin-right: 0.2em;
+}
+
+.navbar li {
+  padding: 0 0.5rem;
+  color: white !important;
+  /* background: linear-gradient(89deg, rgb(160, 6, 14) 0%, rgb(224, 149, 12) 100%); */
+}
+
+.navbar li a {
+  font-size: 1.5rem;
+  font-weight: normal;
+  position: relative;
+}
+
+/* .menu_active {
+    font-weight: bold;
+    border-bottom: 1rem solid green;
+    color: green !important;
+  } */
+
+.navbar li a:hover {
+  background: linear-gradient(
+    89deg,
+    rgb(160, 6, 14) 0%,
+    rgb(224, 149, 12) 100%
+  );
+  color: #fff;
+}
+.navbar li a.active {
+  background: linear-gradient(
+    89deg,
+    rgb(160, 6, 14) 0%,
+    rgb(224, 149, 12) 100%
+  );
+  color: #fff;
+  font-weight: bold;
+}
+
+/* -------- */
+
+/* Style the main dropdown menu */
+.nav-item.dropdown {
+  position: relative;
+}
+.nav-item.dropdown h2 {
+  color: red;
+}
+
+/* Style the dropdown menu container */
+.nav-item.dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff; /* Background color */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Drop shadow */
+  padding: 8px 0;
+  z-index: 1000; /* Ensure the menu is on top of other elements */
+}
+
+/* Style the dropdown menu items */
+.nav-item.dropdown .dropdown-menu .dropdown-item {
+ 
+  text-decoration: none; /* Remove underline */
+  padding: 8px 16px;
+  display: block;
+  white-space: nowrap;
+}
+
+/* Style the separator line */
+.nav-item.dropdown .dropdown-divider {
+  margin: 4px 0;
+  border-top: 1px solid #e71111;
+}
+
+
+/* --------------- */
+
+
+.social-links {
+  padding-left: 5em;
+}
+.social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  background-color: yellow;
+  margin: 0 5px;
+  text-align: center;
+  border-radius: 50%;
+  color: green;
+  transition: all 0.5s ease;
+}
+.social-links a:hover {
+  color: blue;
+  background-color: rgb(79, 235, 79);
+}
+
+/* main style start */
+
+.main {
+  min-height: 81vh;
+  /* min-height: auto; */
+  /* border: 8px solid blue; */
+  /* margin: 4px; */
+  padding: 30px;
+  /* background-color: yellow; */
+  /* background: linear-gradient(to right, yellow, #00ff6c); */
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* footer style start */
+
+.footer {
+  height: 7vh;
+  padding: 10px;
+  text-align: center;
+  /* background-color: #003f5c; */
+  background-color: rgb(224, 149, 12);
+  color: white;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Contact Page */
+
+.formCP {
+  background: #fff;
+  border: 4px solid blue;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.formCP input,
+textarea {
+  border-radius: 8px;
+  border: 2px solid blue;
+  outline: none;
+  color: #1d2129;
+  /* margin: 1rem 0; */
+  padding: 0.5rem 0.75rem;
+  width: 70%;
+  font-size: 1rem;
+}

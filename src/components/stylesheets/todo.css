@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap");
+
+.main-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.child-div {
+  /* text-align: center; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* margin-top: 2rem; */
+  margin: 0 auto;
+  padding-bottom: 3rem;
+  background-color: #f4f4f4;
+  width: 50%;
+  height: auto;
+  box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+}
+
+.child-div figure img {
+  width: 25%;
+  height: 25%;
+}
+
+.child-div figure figcaption {
+  color: blue;
+  font-size: 2.2rem;
+  padding-top: 2rem;
+  text-transform: capitalize;
+}
+
+.addItems input {
+  width: 80%;
+  height: 3.4rem;
+  padding: 2rem 1.2rem;
+  font-size: 1.8rem;
+  line-height: 1.42857143;
+  margin-top: 2rem;
+  color: rgb(58, 57, 57);
+  background-color: #fff;
+  background-image: none;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.4rem;
+  -webkit-box-shadow: inset 0 0.1rem 0.1rem rgb(0 0 0 / 8%);
+  box-shadow: inset 0 0.1rem 0.1rem rgb(0 0 0 / 8%);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.addItems input,
+.addItems input:focus,
+.addItems input:active,
+.addItems input:active:focus {
+  border: none;
+  padding: 2.3rem 1.5rem;
+  outline: auto;
+}
+
+.addItems input {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.addItems input:focus {
+  -webkit-box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.todo-btn {
+  width: 10%;
+  display: flex;
+  /* margin-left: 60%; */
+  justify-content: space-around;
+}
+
+.fa {
+  margin-left: -2.5rem;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 10;
+  background-color: #fff;
+  background-image: none;
+  color: #666;
+  -webkit-transition: color 0.15s linear;
+  transition: color 0.15s linear;
+  font-size: 2rem;
+}
+.fa:hover {
+  color: rgb(47, 214, 122);
+}
+
+.fa-plus:before {
+  content: "\f067";
+  font-size: 1.5rem;
+}
+
+.showItems {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.eachItem {
+  padding: 1.2rem 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+  width: 80%;
+
+  color: red;
+  background: gray;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: start; */
+}
+.eachItem2 {
+  padding: 1.2rem 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+  width: 80%;
+
+  color: #fff;
+  background: rgb(8, 252, 109);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .eachItem:hover {
+  background: orange;
+  color: blue;
+} */
+
+.fa-trash-alt,
+.fa-edit {
+  /* margin-left: -2.5rem; */
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 10;
+  color: rgb(251, 251, 251);
+  -webkit-transition: color 0.15s linear;
+  transition: color 0.15s linear;
+  font-size: 2rem;
+}
+
+.addItems .fa-edit {
+  color: rgb(47, 214, 122);
+}
+
+.fa-edit {
+  margin-left: -3.5rem;
+}
+
+.eachItem:hover .fa-trash-alt {
+  color: red;
+}
+
+.eachItem:hover .fa-edit {
+  color: green;
+}
+
+.eachItem:hover h3 {
+  color: blue;
+}
+
+.Tbtn {
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 45px;
+  /* max-width: 160px; */
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 30%;
+}
+.Tbtn:hover {
+  text-decoration: none;
+}
+
+.effect04 {
+  --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
+  display: var(--uismLinkDisplay);
+  color: #000;
+  /* outline: solid 2px #000; */
+  background: chartreuse;
+  border-radius: 8px;
+  position: relative;
+  transition-duration: 0.4s;
+  overflow: hidden;
+}
+
+.effect04::before,
+.effect04 span {
+  margin: 0 auto;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+  transition-duration: 0.4s;
+}
+
+.effect04:hover {
+  background: crimson;
+}
+
+.effect04:hover span {
+  -webkit-transform: translateY(-400%) scale(-0.1, 20);
+  transform: translateY(-400%) scale(-0.1, 20);
+}
+
+.effect04::before {
+  content: attr(data-sm-link-text);
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: translateY(500%) scale(-0.1, 20);
+  transform: translateY(500%) scale(-0.1, 20);
+}
+
+.effect04:hover::before {
+  letter-spacing: 0.05em;
+  -webkit-transform: translateY(0) scale(1, 1);
+  transform: translateY(0) scale(1, 1);
+}
