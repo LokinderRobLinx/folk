@@ -20,7 +20,7 @@ const EditCust = ({ cust, onUpdate, onCancel }) => {
     if (newName === "") {
        alert("Fill The Customer Name If Whant to change it")
     } else {
-      onUpdate(cust.id, newName);
+      onUpdate(cust.id, cust.name, newName);
     }
   };
 
@@ -49,11 +49,19 @@ const EditCust = ({ cust, onUpdate, onCancel }) => {
         const cardsQuery = query(collection(db, 'allcards'), where('cardno', '==', card));
       const querySnapshot = await getDocs(cardsQuery); 
 
-           // Check if any matching card was found
-      if (querySnapshot ===  card) {
-       
-          await updateDoc(doc(db, "allcards",  where('cardno', '==', card) ), { customer: null });
-      
+      if (!querySnapshot.empty) {
+        // Assuming there's only one matching card, otherwise, you might need to loop through results.
+        const cardDoc = querySnapshot.docs[0];
+        const cardId = cardDoc.id;
+  
+        // await deleteDoc(doc(db, 'allcards', cardId));
+        await updateDoc(doc(db, "allcards", cardId), {
+          customer: null
+        });
+  
+        console.log('Card deleted successfully.');
+      } else {
+        console.log('Card not found.');
       }
 
         console.log(`Deleted card: ${card}`);

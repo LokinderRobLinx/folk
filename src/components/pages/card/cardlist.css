@@ -1,10 +1,11 @@
 .container-list {
-    background: white;
+    background: #f0f0f0;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     display: inline-flex;
-    height: 100%;
+    padding: 20px;
+    height: 80%;
 }
 
 .header-list {

@@ -24,6 +24,8 @@ import GetUsers from "./components/pages/lists/GetUsers";
 import GetCustomers from "./components/pages/lists/GetCustomers";
 import AddUser from "./components/pages/lists/AddUser";
 import AddCustomers from "./components/pages/lists/AddCustomers";
+import AssignPass from "./components/pages/lists/AssignPass";
+import AddCards from "./components/pages/lists/AddCards";
 // import AddUser from "./components/projects/card/AddUser";
 // import GetUser from "./components/projects/card/GetUser";
 
@@ -57,7 +59,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
 
           <Route path="/add-user" element={<AddUser username={user} />} />
+          <Route path="/add-cards" element={<AddCards username={user} />} />
           <Route path="/add-cust" element={<AddCustomers />} />
+          <Route path="/assign-pass" element={<AssignPass username={user} />} />
           <Route path="/scan" element={<QRCodeScanner />} />
           <Route path="/cards" element={<CardList />} />
           <Route path="/users" element={<UserList />} />
@@ -78,6 +82,7 @@ function App() {
           <Route path="/get-customers" element={<GetCustomers />} />
           <Route path="/customers" element={<CustomerList />} />
           <Route path="/add-cust" element={<AddCustomers />} />
+          <Route path="/assign-pass" element={<AssignPass username={user} />} />
 
           <Route path="*" element={<Errorpage />} />
         </Routes>

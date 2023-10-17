@@ -5,6 +5,7 @@ import { db } from './firebase';
 const AddCustomers = () => {
   const [cust, setCust] = useState([]);
   const [cards, setCards] = useState([]);
+  const [passLeft, setPassLeft] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
   const formSubmitA = (e) => {
@@ -27,7 +28,7 @@ const AddCustomers = () => {
       // Fetch card details from allcards where customer is null
       const cardsQuery = query(collection(db, 'allcards'), where('customer', '==', null));
       const querySnapshot = await getDocs(cardsQuery);
-
+      setPassLeft(querySnapshot.docs)
       
       // Create an array of cards
       // const newCards = Array.from({ length: numCards }, (_, index) => `${cust.slice(0, 4)}${index + 1}`);

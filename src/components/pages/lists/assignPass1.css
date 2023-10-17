@@ -1,0 +1,188 @@
+/* Default styles for both mobile and PC */
+.frame {
+    background: #f0f0f0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .frame .addItems {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .frame .div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .frame .div-2 {
+    background-color: #d1d1d133;
+    border-radius: 5px;
+    flex: none;
+    align-self: stretch;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    position: relative;
+}
+
+.frame .div-5 {
+    flex-direction: column;
+    flex: 1 1;
+    justify-content: center;
+    align-self: stretch;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.frame .div-6 {
+    flex-direction: column;
+    flex: 1;
+    /* align-items: flex-start; */
+    gap: 15px;
+    display: flex;
+    position: relative;
+  }
+
+  .frame .text-wrapper {
+    color: var(--secondary-colorsorange-400);
+    font-family: var(--display-6-extra-bold-font-family);
+    font-size: var(--display-6-extra-bold-font-size);
+    font-style: var(--display-6-extra-bold-font-style);
+    font-weight: var(--display-6-extra-bold-font-weight);
+    letter-spacing: var(--display-6-extra-bold-letter-spacing);
+    line-height: var(--display-6-extra-bold-line-height);
+    text-align: center;
+    white-space: nowrap;
+    flex: 1;
+    height: 17.38px;
+    margin: 20px;
+    position: relative;
+  }
+  
+  .frame .text-wrapper-2,
+  .text-wrapper-4 {
+    margin-top: 10px;
+    font-size: large;
+    font-weight: bold;
+  }
+
+  /* .frame .text-wrapper-6 {
+    font-size: large;
+    font-weight: bold;
+  } */
+  
+  .frame .div-2 {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .frame input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .frame button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .frame .showItems {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .frame .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  .frame .todo-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  .frame .card {
+    background-color: #fff;
+    /* border: 0.5px solid #0000; */
+    /* border-image: linear-gradient(#a0060e, #e0950c) 1; */
+    border: 2px solid rgb(224, 149, 12);
+    border-radius: 50px;
+    flex: none;
+    align-self: stretch;
+    align-items: center;
+    gap: 24px;
+    /* width: 100%; */
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    position: relative;
+  }
+  .frame .card-tick-wrapper {
+    background-color: var(--secondary-colorsorange-400);
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 64px;
+    height: 64px;
+    padding: 11px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+  .frame .card-tick {
+    width: 36px !important;
+    height: 36px !important;
+    position: relative !important;
+  }
+  
+  /* Media query for mobile view */
+  @media (max-width: 768px) {
+    .div-4 {
+      flex-direction: column;
+    }
+  
+    .div-5 {
+      flex-direction: column;
+    }
+  }
+  
+  /* Media query for PC view */
+  @media (min-width: 769px) {
+    .div-4 {
+      flex-direction: row;
+    }
+  
+    .div-5 {
+      flex-direction: row;
+    }
+  }

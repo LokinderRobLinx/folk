@@ -1,21 +1,32 @@
-import { collection, onSnapshot, query } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react'
-import { db } from './firebase';
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { db } from "./firebase";
 
 const UserList = () => {
-    const [users, setUsers] = useState([]);
-    const [search, setSearch] = useState("");
+  const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState("");
 
-    const [selectedUser, setSelectedUser] = useState("");
+  const [selectedUser, setSelectedUser] = useState("");
   const [selectedUserCards, setSelectedUserCards] = useState([]);
-    
-    const searchKeys = [ "name"];
-    const handleSearch = (e) => {
-      e.preventDefault(); // Prevent form submission
-    console.log(`You Search for ${search} in UserList`)
-    };
 
-     // Read users from firebase
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
+
+  const searchKeys = ["name"];
+  const handleSearch = (e) => {
+    e.preventDefault(); // Prevent form submission
+    console.log(`You Search for ${search} in UserList`);
+  };
+
+  // Read users from firebase
   useEffect(() => {
     const q = query(collection(db, "users"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -29,16 +40,57 @@ const UserList = () => {
     return () => unsubscribe();
   }, []);
 
-   // Show the popup of selectedUser's cards
-   const showCards = async (selectedName) => {
+  // Delete user from users & allcards in firebase
+  const deleteUser = async (user) => {
+    console.log("deleteUser", user, user.name);
+    await deleteDoc(doc(db, "users", user.id));
+
+    // Query the 'allcards' collection where 'user' is equal to 'user.name'
+    const cardsQuery = query(
+      collection(db, "allcards"),
+      where("user", "==", user.name)
+    );
+    const querySnapshot = await getDocs(cardsQuery);
+
+    // Array to store card IDs that match the query
+    const cardIdsToUpdate = [];
+
+    querySnapshot.forEach((cardDoc) => {
+      const cardId = cardDoc.id;
+      cardIdsToUpdate.push(cardId);
+    });
+
+    // Iterate through the card IDs and update the 'customer' field for each one
+    for (const cardId of cardIdsToUpdate) {
+      await deleteDoc(doc(db, "allcards", cardId));
+
+      console.log(`Deleted user with ID: ${cardId}`);
+    }
+  };
+
+  // Show Delete Confirmation popup
+  const handleDeleteClick = (user) => {
+    setUserToDelete(user);
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (userToDelete) {
+      deleteUser(userToDelete);
+    }
+
+    setUserToDelete(null);
+    setShowConfirmation(false);
+  };
+
+  // Show the popup of selectedUser's cards
+  const showCards = async (selectedName) => {
     console.log("selectedCust:", selectedName.id, selectedName.name);
 
     // setShow(!show)
 
     // Find the selected customer and update the selectedCustCards state
-    const selectedUser = users.find(
-      (user) => user.name === selectedName
-    );
+    const selectedUser = users.find((user) => user.name === selectedName);
     setSelectedUser(selectedName.name);
     console.log(selectedName.name);
     // setSelectedCust(customers.find((cust) => cust.name === selectedName));
@@ -63,43 +115,42 @@ const UserList = () => {
   const npage = Math.ceil(users.length / recordePerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
-
   return (
     <>
-    <div className="container-list">
-      <h1 className="header-list">User List</h1>
+      <div className="container-list">
+        <h1 className="header-list">User List</h1>
 
-      <div className="content">
-        <div className="search">
-          <div className="s1">
-            <form className="addItems" onSubmit={handleSearch}>
-              <input
-                className="search-input"
-                type="text"
-                name="text"
-                placeholder="✍ Search User..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                required
-              />
-              <i
-                className="fa fa-search add-btn"
-                title="Reset Search"
-                onClick={() => setSearch("")}
-              />
-            </form>
+        <div className="content">
+          <div className="search">
+            <div className="s1">
+              <form className="addItems" onSubmit={handleSearch}>
+                <input
+                  className="search-input"
+                  type="text"
+                  name="text"
+                  placeholder="✍ Search User..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  required
+                />
+                <i
+                  className="fa fa-search add-btn"
+                  title="Reset Search"
+                  onClick={() => setSearch("")}
+                />
+              </form>
+            </div>
           </div>
-        </div>
 
-        <div className="table">
-          <div className="row">
-            <h3 className="cell-h">User Name</h3>
-            <h3 className="cell-h">Cards</h3>
-          </div>
-          {records.map((user, index) => (
-        <div className="row" key={index}>
-          <div className="cell">{user.name}</div>
-          <div
+          <div className="table">
+            <div className="row">
+              <h3 className="cell-h">User Name</h3>
+              <h3 className="cell-h">Cards</h3>
+            </div>
+            {records.map((user, index) => (
+              <div className="row" key={index}>
+                <div className="cell">{user.name}</div>
+                <div
                   style={{ cursor: "pointer" }}
                   title="Check Cards"
                   className="cell"
@@ -107,11 +158,27 @@ const UserList = () => {
                 >
                   {user.cards.length}
                 </div>
-        </div>
-      ))}
-        </div>
+                <div className="cell">
+                  <i
+                    className="far fa-trash-alt add-btn"
+                    title="Delete user"
+                    // onClick={() => deleteUser(user)}
+                    onClick={() => handleDeleteClick(user)}
+                  ></i>
+                </div>
+              </div>
+            ))}
+          </div>
 
-        <div className="pagination-container">
+          {showConfirmation && (
+        <div className="confirmation-popup">
+          <p>Are you sure you want to delete the user?</p>
+          <button onClick={handleConfirmDelete}>Yes</button>
+          <button onClick={() => setShowConfirmation(false)}>No</button>
+        </div>
+      )}
+
+          <div className="pagination-container">
             <ul className="pagination-list">
               <li className="page-item">
                 <i
@@ -178,13 +245,10 @@ const UserList = () => {
               </ul>
             </div>
           ) : null}
-
-
-
+        </div>
       </div>
-    </div>
-  </>
-  )
+    </>
+  );
 
   function prePage() {
     if (currentPage !== 1) {
@@ -201,7 +265,6 @@ const UserList = () => {
       setCurrentPage(currentPage + 1);
     }
   }
+};
 
-}
-
-export default UserList
+export default UserList;

@@ -17,12 +17,12 @@ const Navbar1 = ({ username, onLogout }) => {
     // Call the onLogout function to log the user out
     onLogout();
   };
+
   return (
     <>
       <section className="navbar-bg">
         <nav className="navbar">
           <div className="navbar-container">
-
             <Link className="logo" to="/">
               <img src={logo} alt="logo" className="logoImg" />
               <h2>
@@ -38,10 +38,8 @@ const Navbar1 = ({ username, onLogout }) => {
               <span></span>
             </button> */}
 
-
-           
             {/* <ul className={`navbar-nav ${show ? "active" : ""}`}> */}
-            <ul className= 'navbar-nav'>
+            <ul className="navbar-nav">
               {username === "lokin" ? (
                 <>
                   <li className="nav-item">
@@ -50,65 +48,69 @@ const Navbar1 = ({ username, onLogout }) => {
                     </NavLink>
                   </li>
                   <li className="nav-item dropdown">
-                      <h2
-                       onClick={toggleDropdown2}
-                        type="button"
-                        className="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                       Add
-                      </h2>
-                      {showDropdown2 && (
+                    <h2
+                      onClick={toggleDropdown2}
+                      type="button"
+                      className="nav-link dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Add
+                    </h2>
+                    {showDropdown2 && (
                       <ul className="dropdown-menu">
                         <li>
                           <NavLink to="/add-user" className="dropdown-item">
-                           Add User
+                            Add User
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink to="/add-cards" className="dropdown-item">
+                            Add Cards
                           </NavLink>
                         </li>
                         <li>
                           <hr className="dropdown-divider" />
                         </li>
-                        <li>
-                          <NavLink to="/add-cust" className="dropdown-item">
-                            Add Customer
+                        <li className="nav-item">
+                          <NavLink className="nav-link" to="/assign-pass">
+                            Assign Pass
                           </NavLink>
                         </li>
                       </ul>
-                      )}
-                    </li>
+                    )}
+                  </li>
                   <li className="nav-item">
-                      <NavLink className="nav-link" to="/users">
-                        Users
-                      </NavLink>
-                    </li>
-                    <li className="nav-item">
-                      <NavLink className="nav-link" to="/customers">
-                        Customers
-                      </NavLink>
-                    </li>
-                    <li className="nav-item">
-                      <NavLink className="nav-link" to="/cards">
-                        Cards
-                      </NavLink>
-                    </li>
-                    <li className="nav-item dropdown">
-                      <h2
-                  
-                       onClick={toggleDropdown}
-                        type="button"
-                        className="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        {/* {loggeduser.name} */}
-                        {username == "lokin" ? "Admin" : "User"}
-                      </h2>
-                      {showDropdown && (
+                    <NavLink className="nav-link" to="/users">
+                      Users
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/customers">
+                      Customers
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/cards">
+                      Cards
+                    </NavLink>
+                  </li>
+                  <li className="nav-item dropdown">
+                    <h2
+                      onClick={toggleDropdown}
+                      type="button"
+                      className="nav-link dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {/* {loggeduser.name} */}
+                      {username == "lokin" ? "Admin" : "User"}
+                    </h2>
+                    {showDropdown && (
                       <ul className="dropdown-menu">
                         <li>
                           <NavLink to="/profile" className="dropdown-item">
-                          {username}
+                            {username}
                           </NavLink>
                         </li>
                         <li>
@@ -130,11 +132,11 @@ const Navbar1 = ({ username, onLogout }) => {
                           </NavLink>
                         </li>
                       </ul>
-                      )}
-                    </li>
+                    )}
+                  </li>
                   {/* Add more navigation items for 'lokin' */}
                 </>
-              ) : username === "viraj" ? (
+              ) : username === ("viraj" || "chetan") ? (
                 <>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/scan">
@@ -142,37 +144,37 @@ const Navbar1 = ({ username, onLogout }) => {
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                      <NavLink className="nav-link" to="/add-cust">
-                        Assign
-                      </NavLink>
-                    </li>
-                    <li className="nav-item">
-                      <NavLink className="nav-link" to="/customers">
-                        Customers
-                      </NavLink>
-                    </li>
-                    <li className="nav-item">
-                      <NavLink className="nav-link" to="/get-cards">
-                        Cards
-                      </NavLink>
-                    </li>
-                    <li className="nav-item dropdown">
-                      <h2
+                    <NavLink className="nav-link" to="/assign-pass">
+                      Assign
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/customers">
+                      Customers
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/get-cards">
+                      Cards
+                    </NavLink>
+                  </li>
+                  <li className="nav-item dropdown">
+                    <h2
                       //  to="/clock"
-                       onClick={toggleDropdown}
-                        type="button"
-                        className="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        {/* {loggeduser.name} */}
-                        {username == "lokin" ? "Admin" : "User"}
-                      </h2>
-                      {showDropdown && (
+                      onClick={toggleDropdown}
+                      type="button"
+                      className="nav-link dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {/* {loggeduser.name} */}
+                      {username == "lokin" ? "Admin" : "User"}
+                    </h2>
+                    {showDropdown && (
                       <ul className="dropdown-menu">
                         <li>
                           <NavLink to="/profile" className="dropdown-item">
-                          {username}
+                            {username}
                           </NavLink>
                         </li>
                         <li>
@@ -194,8 +196,8 @@ const Navbar1 = ({ username, onLogout }) => {
                           </NavLink>
                         </li>
                       </ul>
-                      )}
-                    </li>
+                    )}
+                  </li>
                 </>
               ) : (
                 <>
@@ -217,42 +219,41 @@ const Navbar1 = ({ username, onLogout }) => {
                 </>
               )}
 
-                <div className="social-links">
-                  <a
-                    href="https://www.facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Facebook"
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </a>
-                  <a
-                    href="https://twitter.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Twitter"
-                  >
-                    <i className="fab fa-twitter" />
-                  </a>
-                  <a
-                    href="https://www.instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Instagram"
-                  >
-                    <i className="fab fa-instagram" />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/lokinder007/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="LinkedIn"
-                  >
-                    <i className="fab fa-linkedin-in" />
-                  </a>
-                </div>
+              <div className="social-links">
+                <a
+                  href="https://www.facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Facebook"
+                >
+                  <i className="fab fa-facebook-f" />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Twitter"
+                >
+                  <i className="fab fa-twitter" />
+                </a>
+                <a
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Instagram"
+                >
+                  <i className="fab fa-instagram" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/lokinder007/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="LinkedIn"
+                >
+                  <i className="fab fa-linkedin-in" />
+                </a>
+              </div>
             </ul>
-
           </div>
         </nav>
       </section>

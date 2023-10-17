@@ -717,6 +717,7 @@ li {
   color: red;
   border: 2px solid rgb(224, 149, 12);
   text-decoration: none;
+  cursor: pointer;
 }
 
 .btn:hover {

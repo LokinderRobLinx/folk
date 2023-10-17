@@ -3,6 +3,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDoc,
   getDocs,
   onSnapshot,
   query,
@@ -27,7 +28,7 @@ const CardList = () => {
   const searchKeys = ["cardno", "customer"];
   const handleSearch = (e) => {
     e.preventDefault(); // Prevent form submission
-    console.log(`You Search for ${search} in CardList`)
+    console.log(`You Search for ${search} in CardList`);
   };
 
   // Read cards from firebase
@@ -58,19 +59,19 @@ const CardList = () => {
     } else {
       // Customer name is empty, show a message
       console.log("Please Enter Customer Name");
-      alert("Please Enter Customer Name")
+      alert("Please Enter Customer Name");
     }
   };
 
   // Delete cards in firebase
-  const deleteCard = async (card) => {
-    await deleteDoc(doc(db, "allcards", card.id));
-  };
+  // const deleteCard = async (card) => {
+  //   await deleteDoc(doc(db, "allcards", card.id));
+  // };
 
-   // Delete customer from the card in firebase
+  // Delete customer from the allcards & customers in firebase
   const deleteCust = async (card) => {
     await updateDoc(doc(db, "allcards", card.id), {
-      customer: null
+      customer: null,
     });
   };
 
@@ -92,11 +93,20 @@ const CardList = () => {
     await updateDoc(doc(db, "allcards", cardId), {
       customer: newName,
     });
-     // Add customer in customers database
-    // await addDoc(collection(db, "customers"), {
-    //   name: newName,
-    //   cards: getDocs(query(collection(db, 'allcards', cardId.cardno))),
-    // });
+    //  Add customer in customers database
+    // 1. Retrieve the card by its ID
+    const cardSnapshot = await getDoc(doc(db, "allcards", cardId));
+    if (cardSnapshot.exists()) {
+      const cardData = cardSnapshot.data();
+
+      // 2. Add the customer in the customers collection
+      await addDoc(collection(db, "customers"), {
+        name: newName,
+        cards: cardData.cardno,
+      });
+      console.log("Customer added from cardList successfully.");
+    }
+
     setSelectedCard(null);
     setIsEditing(false);
   };
@@ -127,7 +137,7 @@ const CardList = () => {
       return card.customer;
     } else if (filter === "not-assigned") {
       return !card.customer;
-    }  else {
+    } else {
       return true;
     }
   });
@@ -139,7 +149,7 @@ const CardList = () => {
   const records = filteredCards
     .filter((item) =>
       searchKeys.some((key) =>
-        item[key].toLowerCase().includes(search.toLowerCase())
+        item[key]?.toLowerCase()?.includes(search.toLowerCase())
       )
     )
     .slice(firstIndex, lastIndex);
@@ -239,8 +249,8 @@ const CardList = () => {
                 checked={filter === "not-assigned"}
                 onChange={() => setFilter("not-assigned")}
               />{" "}
-              Not Assigned ({filter === "not-assigned" ? filteredCards.length : 0}
-              )
+              Not Assigned (
+              {filter === "not-assigned" ? filteredCards.length : 0})
             </label>
           </div>
 
@@ -250,28 +260,33 @@ const CardList = () => {
               <h3 className="cell-h">Customer Name</h3>
             </div>
             {records.map((card, index) => (
-              <div className={card.arrived ? "arrived row" : " row"} key={index}>
+              <div
+                className={card.arrived ? "arrived row" : " row"}
+                key={index}
+              >
                 <div className="cell">{card.cardno}</div>
                 <div onClick={() => updateAllCards(card)} className="cell">
                   {card.customer}
                 </div>
-                <div className="cell">
-                  <i
-                    className="far fa-edit"
-                    title="Edit card"
-                    onClick={() => openEditPopup(card)}
-                  ></i>
-                  <i
-                    className="far fa-trash-alt add-btn"
-                    title="Delete Customer"
-                    onClick={() => deleteCust(card)}
-                  ></i>
-                  <i
-                    className="far fa-delete-left add-btn"
-                    title="Delete Card"
-                    onClick={() => deleteCard(card)}
-                  ></i>
-                </div>
+                {/* {!card.customer ? (
+                  <div className="cell">
+                    <i
+                      className="far fa-edit"
+                      title="Edit card"
+                      onClick={() => openEditPopup(card)}
+                    ></i>
+                    <i
+                      className="far fa-trash-alt add-btn"
+                      title="Delete Customer"
+                      onClick={() => deleteCust(card)}
+                    ></i>
+                    <i
+                      className="far fa-delete-left add-btn"
+                      title="Delete Card"
+                      onClick={() => deleteCard(card)}
+                    ></i>
+                  </div>
+                ) : null} */}
               </div>
             ))}
           </div>
@@ -314,8 +329,6 @@ const CardList = () => {
               </li>
             </ul>
           </div>
-
-          
         </div>
       </div>
     </>

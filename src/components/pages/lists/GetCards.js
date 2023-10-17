@@ -57,7 +57,7 @@ const GetCards = () => {
   const records = filteredCards
     .filter((item) =>
       searchKeys.some((key) =>
-        item[key].toLowerCase().includes(search.toLowerCase())
+        item[key]?.toLowerCase()?.includes(search.toLowerCase())
       )
     )
     .slice(firstIndex, lastIndex);

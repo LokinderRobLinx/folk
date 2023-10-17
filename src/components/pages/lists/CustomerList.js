@@ -4,9 +4,11 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDocs,
   onSnapshot,
   query,
   updateDoc,
+  where,
 } from "firebase/firestore";
 import { db } from "./firebase";
 import EditCust from "./EditCust";
@@ -22,12 +24,11 @@ const CustomerList = () => {
   const [selectedCust, setSelectedCust] = useState("");
   const [selectedCustCards, setSelectedCustCards] = useState([]);
 
-
   // console.log(search);
   const searchKeys = ["name"];
   const handleSearch = (e) => {
     e.preventDefault(); // Prevent form submission
-    console.log(`You Search for ${search} in CustomerList`)
+    console.log(`You Search for ${search} in CustomerList`);
   };
 
   // Read customers from firebase
@@ -82,11 +83,36 @@ const CustomerList = () => {
   };
 
   // Update customers in firebase
-  const updateCustInFirebase = async (custId, newName) => {
-    console.log("editing", custId);
+  const updateCustInFirebase = async (custId, custName, newName) => {
+    console.log("editing", custId, custName, newName);
     await updateDoc(doc(db, "customers", custId), {
       name: newName,
     });
+
+    // Query the 'allcards' collection where 'customer' is equal to 'custName'
+    const cardsQuery = query(
+      collection(db, "allcards"),
+      where("customer", "==", custName)
+    );
+    const querySnapshot = await getDocs(cardsQuery);
+
+    // Array to store card IDs that match the query
+    const cardIdsToUpdate = [];
+
+    querySnapshot.forEach((cardDoc) => {
+      const cardId = cardDoc.id;
+      cardIdsToUpdate.push(cardId);
+    });
+
+    // Iterate through the card IDs and update the 'customer' field for each one
+    for (const cardId of cardIdsToUpdate) {
+      await updateDoc(doc(db, "allcards", cardId), {
+        customer: newName,
+      });
+
+      console.log(`Updated customer name for card with ID: ${cardId}`);
+    }
+
     setSelectedCust(null);
     setIsEditing(false);
   };
@@ -171,11 +197,13 @@ const CustomerList = () => {
                     title="Edit cust"
                     onClick={() => openEditPopup(cust)}
                   ></i>
-                  <i
-                    className="far fa-trash-alt add-btn"
-                    title="Delete cust"
-                    onClick={() => deleteCust(cust)}
-                  ></i>
+                  {cust.cards.length === 0 ? (
+                    <i
+                      className="far fa-trash-alt add-btn"
+                      title="Delete cust"
+                      onClick={() => deleteCust(cust)}
+                    ></i>
+                  ) : null}
                 </div>
               </div>
             ))}
@@ -183,12 +211,12 @@ const CustomerList = () => {
 
           {/* Render the edit popup when editing is enabled */}
           {isEditing && (
-                    <EditCust
-                      cust={editCust}
-                      onUpdate={updateCustInFirebase}
-                      onCancel={closeEditPopup}
-                    />
-                  )}
+            <EditCust
+              cust={editCust}
+              onUpdate={updateCustInFirebase}
+              onCancel={closeEditPopup}
+            />
+          )}
 
           <div className="pagination-container">
             <ul className="pagination-list">
@@ -250,8 +278,6 @@ const CustomerList = () => {
               </ul>
             </div>
           ) : null}
-
-
         </div>
       </div>
     </>

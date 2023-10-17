@@ -85,3 +85,49 @@
   background: linear-gradient(89deg, rgb(160, 6, 14) 0%, rgb(224, 149, 12) 100%);
   color: #fff;
 }
+
+
+/* -----------css for confirmation-popup -> UserList---------- */
+.confirmation-popup {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  text-align: center;
+}
+
+.confirmation-popup p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.confirmation-popup button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirmation-popup button:hover {
+  background-color: #0056b3;
+}
+
+.confirmation-popup button:last-child {
+  background-color: #ccc;
+  color: #333;
+}
+
+.confirmation-popup button:last-child:hover {
+  background-color: #aaa;
+}
+
+/* -----------END css for confirmation-popup -> UserList---------- */
