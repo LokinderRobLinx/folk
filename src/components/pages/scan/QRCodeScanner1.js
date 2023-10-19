@@ -144,7 +144,7 @@ const QRCodeScanner = () => {
 
   return (
     <div>
-      <h1>Scan The Customers Card Here</h1>
+      <h1>Scan The Invitees Card Here</h1>
       
         <div id="reader" ref={videoRef}></div>
 

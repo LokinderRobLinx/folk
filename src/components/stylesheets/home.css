@@ -261,7 +261,8 @@
   
   .element-onboarding .label-text {
     color: var(--color-blackblack-400);
-    flex: 1;
+    /* flex: 1; */
+    padding: 20px;
     font-family: var(--display-3-extra-bold-font-family);
     font-size: var(--display-3-extra-bold-font-size);
     font-style: var(--display-3-extra-bold-font-style);

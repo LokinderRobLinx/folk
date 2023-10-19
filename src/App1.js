@@ -34,7 +34,7 @@ function App() {
   // const [login, setLogin] = useState(null);
 
   const handleLogin = (username) => {
-    setUser(username.slice(0, 5));
+    setUser(username);
     // (user == "lokin" ? setLogin("Admin") : setLogin("User"))
     // const first6Letters = username.slice(0, 6);
   };
@@ -50,7 +50,7 @@ function App() {
       <>
         <Navbar username={user} onLogout={handleLogout} />
         <div className="main">
-        {user === "lokin" ? (
+        {user === "lokinder" ? (
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/register" element={<Register />} />
@@ -69,7 +69,7 @@ function App() {
 
           <Route path="*" element={<Errorpage />} />
         </Routes>
-      ) : user === "viraj" ? (
+      ) : user === "viraj" || user === "chetan" ? (
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />    
           <Route path="/" element={<Home username={user} />} />
@@ -89,6 +89,7 @@ function App() {
       ) : (
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          {/* <Route path="/register" element={<Register />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/1" element={<Home2 />} />
           <Route path="/about" element={<About />} />

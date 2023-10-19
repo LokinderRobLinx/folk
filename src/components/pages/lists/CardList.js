@@ -64,9 +64,9 @@ const CardList = () => {
   };
 
   // Delete cards in firebase
-  // const deleteCard = async (card) => {
-  //   await deleteDoc(doc(db, "allcards", card.id));
-  // };
+  const deleteCard = async (card) => {
+    await deleteDoc(doc(db, "allcards", card.id));
+  };
 
   // Delete customer from the allcards & customers in firebase
   const deleteCust = async (card) => {
@@ -169,7 +169,7 @@ const CardList = () => {
                   className="search-input"
                   type="text"
                   name="text"
-                  placeholder="✍ Search Card or Customer..."
+                  placeholder="✍ Search Card or Invitee..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   required
@@ -257,7 +257,7 @@ const CardList = () => {
           <div className="table">
             <div className="row">
               <h3 className="cell-h">Card</h3>
-              <h3 className="cell-h">Customer Name</h3>
+              <h3 className="cell-h">Invitee Name</h3>
             </div>
             {records.map((card, index) => (
               <div
@@ -268,7 +268,7 @@ const CardList = () => {
                 <div onClick={() => updateAllCards(card)} className="cell">
                   {card.customer}
                 </div>
-                {/* {!card.customer ? (
+                {card.customer ? (
                   <div className="cell">
                     <i
                       className="far fa-edit"
@@ -280,13 +280,22 @@ const CardList = () => {
                       title="Delete Customer"
                       onClick={() => deleteCust(card)}
                     ></i>
+                    {/* <i
+                      className="far fa-delete-left add-btn"
+                      title="Delete Card"
+                      onClick={() => deleteCard(card)}
+                    ></i> */}
+                  </div>
+                ) : 
+                <div className="cell">
+                   
                     <i
                       className="far fa-delete-left add-btn"
                       title="Delete Card"
                       onClick={() => deleteCard(card)}
                     ></i>
                   </div>
-                ) : null} */}
+                }
               </div>
             ))}
           </div>

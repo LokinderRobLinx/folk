@@ -66,7 +66,7 @@ const AddCards = ({username}) => {
   return (
     <>
     <div className="frame">
-      <h1 className="header-list">Add User</h1>
+      <h1 className="header-list">Add Cards</h1>
 
       <form className="addItems" onSubmit={formSubmit}>
         <div className="div">

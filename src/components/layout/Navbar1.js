@@ -40,7 +40,7 @@ const Navbar1 = ({ username, onLogout }) => {
 
             {/* <ul className={`navbar-nav ${show ? "active" : ""}`}> */}
             <ul className="navbar-nav">
-              {username === "lokin" ? (
+              {username === "lokinder" ? (
                 <>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/scan">
@@ -87,7 +87,7 @@ const Navbar1 = ({ username, onLogout }) => {
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/customers">
-                      Customers
+                      Invitees
                     </NavLink>
                   </li>
                   <li className="nav-item">
@@ -104,7 +104,7 @@ const Navbar1 = ({ username, onLogout }) => {
                       aria-expanded="false"
                     >
                       {/* {loggeduser.name} */}
-                      {username == "lokin" ? "Admin" : "User"}
+                      {username == "lokinder" ? "Admin" : "User"}
                     </h2>
                     {showDropdown && (
                       <ul className="dropdown-menu">
@@ -114,9 +114,8 @@ const Navbar1 = ({ username, onLogout }) => {
                           </NavLink>
                         </li>
                         <li>
-                          <NavLink to="/contact" className="dropdown-item">
-                            {/* {loggeduser.email} */}
-                            Contact
+                          <NavLink to="/register" className="dropdown-item">
+                            Register
                           </NavLink>
                         </li>
                         <li>
@@ -134,9 +133,8 @@ const Navbar1 = ({ username, onLogout }) => {
                       </ul>
                     )}
                   </li>
-                  {/* Add more navigation items for 'lokin' */}
                 </>
-              ) : username === ("viraj" || "chetan") ? (
+              ) : username === "viraj" || username === "chetan" ? (
                 <>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/scan">
@@ -150,7 +148,7 @@ const Navbar1 = ({ username, onLogout }) => {
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/customers">
-                      Customers
+                      Invitees
                     </NavLink>
                   </li>
                   <li className="nav-item">
@@ -168,7 +166,7 @@ const Navbar1 = ({ username, onLogout }) => {
                       aria-expanded="false"
                     >
                       {/* {loggeduser.name} */}
-                      {username == "lokin" ? "Admin" : "User"}
+                      {username == "lokinder" ? "Admin" : "User"}
                     </h2>
                     {showDropdown && (
                       <ul className="dropdown-menu">

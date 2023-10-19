@@ -147,10 +147,10 @@ const CustomerList = () => {
   return (
     <>
       <div className="container-list">
-        <h1 className="header-list">Customer List</h1>
+        <h1 className="header-list">Invitee List</h1>
 
         {customers.length < 1 ? null : (
-          <p>{`There are ${customers.length} customers in the list`}</p>
+          <p>{`There are ${customers.length} invitees in the list`}</p>
         )}
 
         <div className="content">
@@ -161,7 +161,7 @@ const CustomerList = () => {
                   className="search-input"
                   type="text"
                   name="text"
-                  placeholder="✍ Search Customer..."
+                  placeholder="✍ Search Invitee..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   required
@@ -177,7 +177,7 @@ const CustomerList = () => {
 
           <div className="table">
             <div className="row">
-              <h3 className="cell-h">Customer Name</h3>
+              <h3 className="cell-h">Invitee Name</h3>
               <h3 className="cell-h">Cards</h3>
             </div>
             {records.map((cust, index) => (

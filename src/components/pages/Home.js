@@ -54,9 +54,9 @@ const Home = ({ username }) => {
 
                 <div
                   onClick={() => {
-                    username === "lokin"
+                    username === "lokinder"
                       ? navigate("/cards")
-                      : username === "viraj"
+                      : username === "viraj" || username === "chetan"
                       ? navigate("/get-cards")
                       : navigate("/login");
                   }}

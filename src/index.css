@@ -705,6 +705,20 @@ li {
   color: red;
 }
 
+.btn1 {
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  /* display: inline-block; */
+  padding: 10px 30px;
+  margin: 20px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: black;
+  border: 2px solid rgb(224, 149, 12);
+  text-decoration: none;
+  cursor: pointer;
+}
 .btn {
   font-weight: 500;
   font-size: 16px;
@@ -714,16 +728,18 @@ li {
   margin: 20px;
   border-radius: 50px;
   transition: 0.5s;
-  color: red;
+  /* color: red; */
+  background: linear-gradient(180deg, rgb(160, 6, 14) 0%, rgb(224, 149, 12) 100%);
+  color: #fff !important;
   border: 2px solid rgb(224, 149, 12);
   text-decoration: none;
   cursor: pointer;
 }
 
-.btn:hover {
+/* .btn:hover {
   background: linear-gradient(180deg, rgb(160, 6, 14) 0%, rgb(224, 149, 12) 100%);
   color: #fff !important;
-}
+} */
 
 .btnA {
   all: unset;

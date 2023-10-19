@@ -5,8 +5,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background: rgb(248, 179, 127); */
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+  }
+
+  /* .input-with-icon {
+    padding-left: 40px;
+    background: url('../../assets/sms.jpg') no-repeat right center;
+    background-size: auto 100%;
+  } */
+
+  .password-input {
+    position: relative;
   }
   
+  .form-control {
+    padding-right: 35px; /* Adjust the padding based on the icon size */
+  }
+  
+  .password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the right value based on the icon size */
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
   .frame .addItems {
     width: 100%;
     display: flex;
@@ -17,11 +42,11 @@
   .frame .div {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .frame .div-2 {
-    background-color: #d1d1d133;
+    /* background-color: #d1d1d133; */
     border-radius: 5px;
     flex: none;
     align-self: stretch;
@@ -34,22 +59,23 @@
 }
 
 .frame .div-5 {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     flex: 1 1;
     justify-content: center;
     align-self: stretch;
     align-items: center;
     gap: 30px;
     width: 100%;
-    display: flex;
     position: relative;
+    padding: 20px 0;
 }
 
 .frame .div-6 {
     flex-direction: column;
     flex: 1;
     /* align-items: flex-start; */
-    gap: 15px;
+    /* gap: 15px; */
     display: flex;
     position: relative;
   }
@@ -89,8 +115,9 @@
   }
   
   .frame input[type="text"],
-  input[type="number"] {
-    width: 100%;
+  .frame input[type="number"],
+  .frame input[type="password"] {
+    /* width: 100%; */
     padding: 10px;
     margin-left: 10px;
     border: 1px solid #ccc;
@@ -139,11 +166,12 @@
     flex: none;
     align-self: stretch;
     align-items: center;
-    gap: 24px;
-    /* width: 100%; */
-    padding: 10px;
+    /* gap: 24px; */
+    width: 41%;
+    padding: 20px;
     margin: 10px;
     display: flex;
+    flex-direction: column;
     position: relative;
   }
   .frame .card-tick-wrapper {
