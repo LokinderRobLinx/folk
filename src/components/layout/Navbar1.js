@@ -147,7 +147,7 @@ const Navbar1 = ({ username, onLogout }) => {
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/customers">
+                    <NavLink className="nav-link" to="/invitees">
                       Invitees
                     </NavLink>
                   </li>
@@ -176,9 +176,8 @@ const Navbar1 = ({ username, onLogout }) => {
                           </NavLink>
                         </li>
                         <li>
-                          <NavLink to="/contact" className="dropdown-item">
-                            {/* {loggeduser.email} */}
-                            Contact
+                          <NavLink to="/customers" className="dropdown-item">
+                            CustomerList
                           </NavLink>
                         </li>
                         <li>
@@ -205,8 +204,8 @@ const Navbar1 = ({ username, onLogout }) => {
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/contact">
-                      Contact
+                    <NavLink className="nav-link" to="/figma">
+                      Figma
                     </NavLink>
                   </li>
                   <li className="nav-item">

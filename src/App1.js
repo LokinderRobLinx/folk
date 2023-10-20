@@ -26,6 +26,9 @@ import AddUser from "./components/pages/lists/AddUser";
 import AddCustomers from "./components/pages/lists/AddCustomers";
 import AssignPass from "./components/pages/lists/AssignPass";
 import AddCards from "./components/pages/lists/AddCards";
+import InviteeList from "./components/pages/lists/InviteeList";
+import InviteeData from "./components/pages/lists/InviteeData";
+import Figma from "./components/pages/lists/Figma";
 // import AddUser from "./components/projects/card/AddUser";
 // import GetUser from "./components/projects/card/GetUser";
 
@@ -67,6 +70,7 @@ function App() {
           <Route path="/users" element={<UserList />} />
           <Route path="/customers" element={<CustomerList />} />
 
+          <Route path="/figma" element={<Figma />} />
           <Route path="*" element={<Errorpage />} />
         </Routes>
       ) : user === "viraj" || user === "chetan" ? (
@@ -81,9 +85,12 @@ function App() {
           <Route path="/get-users" element={<GetUsers />} />
           <Route path="/get-customers" element={<GetCustomers />} />
           <Route path="/customers" element={<CustomerList />} />
+          <Route path="/invitees" element={<InviteeList />} />
+          <Route path="/invitee-data/:name" element={<InviteeData />} />
           <Route path="/add-cust" element={<AddCustomers />} />
           <Route path="/assign-pass" element={<AssignPass username={user} />} />
 
+          <Route path="/figma" element={<Figma />} />
           <Route path="*" element={<Errorpage />} />
         </Routes>
       ) : (
@@ -94,7 +101,9 @@ function App() {
           <Route path="/1" element={<Home2 />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+
           <Route path="*" element={<Errorpage />} />
+          <Route path="/figma" element={<Figma />} />
         </Routes>
       )}
         </div>
